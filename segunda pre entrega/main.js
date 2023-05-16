@@ -206,12 +206,23 @@ function menu3() {
 
 if (menu1 === 1) {
   validoUsuario();
-  muestroTienda();
+  if (validacionU == true) {
+    muestroTienda();
+  } else {
+    alert("quien sos? anda palla")
+  };
+  saludoSalida();
 } else if (menu1 === 2) {
-  creoUsuario()
-  alert("sera redirigido a inicio de sesion")
+  creoUsuario();
+  alert("sera redirigido a inicio de sesion");
   validoUsuario();
-  muestroTienda();
+
+  if (validacionU == true) {
+    muestroTienda();
+  } else {
+    alert("quien sos? anda palla")
+  };
+
   saludoSalida();
 } else if (menu1 === 3) {
   saludoSalida();
@@ -221,13 +232,14 @@ if (menu1 === 1) {
 
 
 if (menu2 === 1) {
-  validoAdmin();{
-    if(validacionA == true){
-    menu3();}else{
+  validoAdmin(); {
+    if (validacionA == true) {
+      menu3();
+    } else {
       alert("quien sos? anda palla")
     }
   }
-  
+
 } else if (menu2 === 2) {
   saludoSalida();
 }
