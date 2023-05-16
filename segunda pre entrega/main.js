@@ -1,58 +1,3 @@
-//la idea es crear un ecomerce en este caso una tienda que vende muebles
-
-//empieza con un alert que dice: hola bienvenido a amoblamientos pepita
-
-
-
-//ingresar con dni y contraseña
-//ingresar dni
-//dni invalido
-//reintentar
-//registrarse 
-//ingresar contraseña 
-//contraseña invalida
-//reintentar
-//olvide mi contraseña
-//registrarse
-//ingresar dni y contraseña
-//dni repetido
-//dni o contraseña vacio
-//registrado con exito
-//salir
-
-
-
-
-//ingresar como admin
-// nuevo producto
-//modificar producto
-//salir
-
-
-
-//ingresar como comprador
-//ver productos
-//alert con los productos ej: 1.silla 2.mesa 3.escritorio
-//elejir producto a comprar 
-//cantidad de producto a comprar
-//ha seleccionado "x" producto y "x" cantidad del mismo
-
-//vuelve a menu anterior donde puede ver carrito
-
-
-
-
-
-//ir al carrito
-//comprar carrito
-//borrar carrito
-//atras
-//salir
-
-
-
-
-
 // Alert de bienvenida
 alert('Hola, bienvenido a Amoblamientos Pepita');
 
@@ -66,6 +11,8 @@ ingresar opcion deseada:
 
 let menu1 = 0;
 let menu2 = 0;
+let validacionU = false;
+let validacionA = false;
 
 if (menu0 === 2) {
   menu1 = parseInt(prompt(`
@@ -75,15 +22,14 @@ ingresar opcion deseada:
 2. Registrarse
 3. Salir
 `))
-}else if(menu0 === 1){
+} else if (menu0 === 1) {
   menu2 = parseInt(prompt(`
 ingresar opcion deseada:
 
 1. Ingresar con DNI y contraseña
 2. Salir
 `))
-}
-;
+};
 
 
 //creo objetos con constructora
@@ -142,8 +88,6 @@ const usuario3 = new usuario(44444444, 1234);
 validacionAdmin.push(admin1, admin2, admin3);
 validacionUsuario.push(usuario1, usuario2, usuario3);
 
-
-
 const muebles = [
   MesaEscandinava,
   MesaIndustrial,
@@ -166,73 +110,39 @@ for (const mueble of muebles) {
 }
 
 
-
-
-// const validarA = validacionAdmin.find((item) => item.dni === ingresarDni && item.contraseña === ingresarContraseña);
-// const validarU = validacionAdmin.find((item) => item.dni === ingresarDni && item.contraseña === ingresarContraseña);
-
-
-
-
-//sirve pero aun nose donde
-/* validacionAdmin.forEach(item => {
-  console.log(item);
-}) */
-
-
-
-
-/* // alert que da el id, nombre y precio.
-for (const producto of productos) {
-  const mensaje = `
-  id: ${producto.id} 
-  Nombre: ${producto.nombre}
-  Precio: ${producto.precio} pesos`;
-  alert(mensaje);
-} */
-
 function saludoSalida() {
   alert("gracias vuelva prontos");
 }
 
-function validoUsuario(){
+function validoUsuario() {
   {
     let ingresarDni = parseInt(prompt("ingresar dni"));
     let ingresarContraseña = parseInt(prompt("ingrese contraseña"));
-  
+
     const validarU = validacionUsuario.find((item) => item.dni === ingresarDni && item.contraseña === ingresarContraseña);
-  
+
     console.log(validarU);
     if (validarU !== undefined) {
       alert("usuario validado")
+      validacionU = true;
     }
   }
 }
 
-function creoUsuario(){
+function creoUsuario() {
   {
     let ingresarDniNuevo = parseInt(prompt("ingresar dni"));
     let ingresarContraseñaNueva = parseInt(prompt("ingrese contraseña"));
-    const nuevoUsuario = new usuario(ingresarDniNuevo,ingresarContraseñaNueva);
-   validacionUsuario.push(nuevoUsuario);
-  
-   alert("usuario creado ");
-  
-  
-  } 
-}
-if (menu1 === 1) {
-  validoUsuario()
-} else if (menu1 === 2) {
-  creoUsuario()
-} else if (menu1 === 3) {
-  saludoSalida();
+    const nuevoUsuario = new usuario(ingresarDniNuevo, ingresarContraseñaNueva);
+    validacionUsuario.push(nuevoUsuario);
+
+    alert("usuario creado satisfactoriamente ");
+
+
+  }
 }
 
-
-
-
-if (menu2 === 1) {
+function validoAdmin() {
   let ingresarDni = parseInt(prompt("ingresar dni"));
   let ingresarContraseña = parseInt(prompt("ingrese contraseña"));
   const validarA = validacionAdmin.find((item) => item.dni === ingresarDni && item.contraseña === ingresarContraseña);
@@ -241,7 +151,83 @@ if (menu2 === 1) {
 
   if (validarA !== undefined) {
     alert("usuario validado")
+    validacionA = true;
   }
+}
+
+function muestroTienda() {
+  alert("a continuacion vera los productos disponibles en la tienda.")
+  if (validacionU = true) {
+    for (const producto of productos) {
+      const mensaje = `
+      id: ${producto.id} 
+      Nombre: ${producto.nombre}
+      Precio: ${producto.precio} pesos`;
+      alert(mensaje);
+    }
+  }
+}
+
+function nuevoObjeto() {
+  let ingresarIdNuevo = parseInt(prompt("ingresar id"));
+  let ingresarNombreNuevo = prompt("ingrese nombre de producto");
+  let ingresarMaderaNuevo = prompt("ingrese tipo de madera de producto");
+  let ingresarPrecioNuevo = parseInt(prompt("ingrese precio de producto"));
+  let ingresarPesoNuevo = parseInt(prompt("ingrese peso de producto"));
+  let ingresarTamañoNuevo = parseInt(prompt("ingrese tamaño de producto"));
+  const nuevoProducto = new mueble(ingresarIdNuevo, ingresarNombreNuevo, ingresarMaderaNuevo, ingresarPesoNuevo, ingresarTamañoNuevo, ingresarPrecioNuevo);
+  productos.push(nuevoProducto);
+  alert("producto añadido ");
+
+}
+
+function menu3() {
+  let eleccionMenu3 = parseInt(prompt(`
+  ingrese la opcion deseada:
+  1. ver tienda
+  2. agregar nuevo objeto a tienda
+  3. salir
+  `))
+  switch (eleccionMenu3) {
+    case 1:
+      muestroTienda();
+      break;
+    case 2:
+      nuevoObjeto();
+      muestroTienda();
+      saludoSalida();
+      break;
+    case 3:
+      saludoSalida();
+      break;
+
+  }
+}
+
+if (menu1 === 1) {
+  validoUsuario();
+  muestroTienda();
+} else if (menu1 === 2) {
+  creoUsuario()
+  alert("sera redirigido a inicio de sesion")
+  validoUsuario();
+  muestroTienda();
+  saludoSalida();
+} else if (menu1 === 3) {
+  saludoSalida();
+}
+
+
+
+
+if (menu2 === 1) {
+  validoAdmin();{
+    if(validacionA == true){
+    menu3();}else{
+      alert("quien sos? anda palla")
+    }
+  }
+  
 } else if (menu2 === 2) {
   saludoSalida();
 }
