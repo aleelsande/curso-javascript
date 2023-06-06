@@ -1,0 +1,60 @@
+
+#contenedores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+  }
+.tarjeta {
+    flex: 0 0 calc(33.33% - 20px);
+    /* 33.33% se refiere a 3 tarjetas por fila. Puedes ajustar este valor según tus necesidades */
+    margin: 10px;
+    background-color: #d0fba7;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+    #contenedor {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+.tarjeta img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}
+
+.nuevoProducto {
+    width: 300px;
+    margin: auto;
+  }
+  
+  /* Estilos para los párrafos */
+  .nuevoProducto p {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  
+  /* Estilos para los campos de entrada de texto */
+  .nuevoProducto .inputNuevoProducto {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Estilos para el botón de envío */
+  .nuevoProducto input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .nuevoProducto input[type="submit"]:hover {
+    background-color: #45a049;
+  }
