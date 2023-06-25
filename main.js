@@ -1,4 +1,5 @@
 
+
 class admin {
     constructor(dni, contraseña) {
         this.dni = dni;
@@ -184,6 +185,13 @@ function validoUsuario(e) {
     console.log(validarU);
     if (validarU !== undefined) {
         console.log("usuario validado")
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'su usuario ha sido validado',
+            showConfirmButton: false,
+            timer: 1500
+          })
         validacionU = true;
         verProductos(productos);
 
@@ -219,6 +227,13 @@ function validoAdmin(e) {
 
     if (validarA !== undefined) {
         console.log("usuario validado")
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'su usuario ha sido validado',
+            showConfirmButton: false,
+            timer: 1500
+          })
         validacionA = true;
 
         pruebaMil();
